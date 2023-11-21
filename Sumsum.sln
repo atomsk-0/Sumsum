@@ -4,11 +4,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{826D16E7-557
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vendor", "vendor", "{3377009A-3758-437A-94D6-301B4B6F6F32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proton", "Proton\Proton.csproj", "{9BD32FC0-8AD5-4CD1-A1E8-46506455521A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proton", "vendor\Proton\Proton.csproj", "{9BD32FC0-8AD5-4CD1-A1E8-46506455521A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sumsum.Injector", "Sumsum.Injector\Sumsum.Injector.csproj", "{0150272E-6B06-4B17-952D-18E87910D673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sumsum.Injector", "src\Sumsum.Injector\Sumsum.Injector.csproj", "{0150272E-6B06-4B17-952D-18E87910D673}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sumsum.Internal", "Sumsum.Internal\Sumsum.Internal.csproj", "{46803B0A-7D68-47D1-AAF3-E3817CA626E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sumsum.Internal", "src\Sumsum.Internal\Sumsum.Internal.csproj", "{46803B0A-7D68-47D1-AAF3-E3817CA626E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
