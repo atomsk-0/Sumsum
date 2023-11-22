@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using Sumsum.Internal.Growtopia.App;
 using Sumsum.Internal.Util;
 using static Sumsum.Internal.Util.WinApi;
 
@@ -6,6 +7,12 @@ namespace Sumsum.Internal.Growtopia;
 
 internal static unsafe class Game
 {
+    internal static TDelegate GetFunction<TDelegate>(string pattern, Memory.FindMode mode, int offset = 0)
+    {
+        Memory.FindAddress(out var addr, pattern, mode, offset);
+        return Marshal.GetDelegateForFunctionPointer<TDelegate>(addr);
+    }
+    
     internal static void Setup()
     {
         if (!GetModuleInformation(GetCurrentProcess(), GetModuleHandle(null!), out var moduleInfo, (uint)sizeof(MODULEINFO)))
@@ -25,6 +32,11 @@ internal static unsafe class Game
         
         PatchIntegrityCheck();
         AllowPasting();
+
+        GetFunctions();
+        
+        BaseApp.SetFpsLimit?.Invoke(IntPtr.Zero, 300f);
+        Log.Info("Fps limit set to 300");
         
         Log.Info("Game Initialized");
     }
@@ -54,4 +66,12 @@ internal static unsafe class Game
             Log.Error("Failed to patch paste");
         }
     }
+    
+    private static void GetFunctions()
+    {
+        BaseApp.SetFpsLimit = GetFunction<SetFpsLimitDelegate>("E8 E5 6F F2 FF", Memory.FindMode.Call);
+    }
 }
+
+[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+public delegate void SetFpsLimitDelegate(IntPtr baseApp, float fps);

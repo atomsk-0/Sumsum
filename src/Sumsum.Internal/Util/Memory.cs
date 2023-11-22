@@ -138,7 +138,7 @@ public static class Memory
         FunctionStart
     }
     
-    public static void FindAddress(out IntPtr dest, string pattern, FindMode mode, int offset = 0)
+    public static void FindAddress(out IntPtr addr, string pattern, FindMode mode, int offset = 0)
     {
         var address = FindPattern(pattern, offset);
 
@@ -162,6 +162,6 @@ public static class Memory
             Log.Error($"Pattern '{pattern}' not found");
         }
 
-        dest = address;
+        addr = address;
     }
 }
