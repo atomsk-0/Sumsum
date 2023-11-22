@@ -4,7 +4,7 @@ Internal cheat written in c# for growtopia
 
 ## Requirements
  - .NET 8.0 SDK
- - C++ Compiler with c++ 17 features supprot
+ - C++ Compiler with c++ 17 features support
 
 ## How to build
   - To build internal open cmd in same dir as the .csproj and write `dotnet publish -c Release -r win-x64 /tl` this will build and compile it to native dll
