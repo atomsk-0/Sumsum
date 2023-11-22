@@ -36,6 +36,23 @@ public static class WinApi
         public uint dwControlKeyState;
     }
     
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr GetCurrentProcess();
+
+    [DllImport("kernel32.dll")]
+    public static extern IntPtr GetModuleHandle(string moduleName);
+
+    [DllImport("psapi.dll", SetLastError = true)]
+    public static extern bool GetModuleInformation(IntPtr hProcess, IntPtr hModule, out MODULEINFO lpmodinfo, uint cb);
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MODULEINFO
+    {
+        public IntPtr lpBaseOfDll;
+        public uint SizeOfImage;
+        public IntPtr EntryPoint;
+    }
+    
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool AllocConsole();
 
@@ -54,6 +71,9 @@ public static class WinApi
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool WriteConsole(IntPtr hConsoleOutput, string lpBuffer, uint nNumberOfCharsToWrite, out uint lpNumberOfCharsWritten, IntPtr lpReserved);
 
+    [DllImport("kernel32.dll")]
+    public static extern bool SetConsoleTextAttribute(IntPtr hConsoleOutput, ushort wAttributes);
+    
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool ReadConsoleInput(IntPtr hConsoleInput, out INPUT_RECORD lpBuffer, uint nLength, out uint lpNumberOfEventsRead);
 
