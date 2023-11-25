@@ -60,4 +60,24 @@ public static class Console
         message += "\n";
         Write(message, color);
     }
+    
+    public static void ReadKey()
+    {
+        IntPtr consoleInput = GetStdHandle(STD_INPUT_HANDLE);
+        INPUT_RECORD inputRecord;
+        uint eventsRead;
+
+        while (true)
+        {
+            ReadConsoleInput(consoleInput, out inputRecord, 1, out eventsRead);
+
+            if (eventsRead > 0 && inputRecord.EventType == KEY_EVENT && inputRecord.KeyEvent.bKeyDown)
+            {
+                char keyChar = inputRecord.KeyEvent.UnicodeChar;
+                IntPtr console = GetStdHandle(STD_OUTPUT_HANDLE);
+                WriteConsole(console, $"Key pressed: {keyChar}", (uint)$"Key pressed: {keyChar}".Length, out _, IntPtr.Zero);
+                break;
+            }
+        }
+    }
 }

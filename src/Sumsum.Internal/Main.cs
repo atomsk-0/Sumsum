@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Sumsum.Internal.Growtopia;
+using Sumsum.Internal.Util;
 using static Sumsum.Internal.Util.WinApi;
 using Console = Sumsum.Internal.Util.Console;
 
@@ -28,6 +29,13 @@ internal static unsafe class Main
 
     private static void OnInjected()
     {
+
+        if (!File.Exists($"C:\\Users\\{Environment.UserName}\\AppData\\Local\\Growtopia\\minhook.x64d.dll"))
+        {
+            Resources.WriteResourceToFile("Sumsum.Internal.minhook.x64d.dll", $"C:\\Users\\{Environment.UserName}\\AppData\\Local\\Growtopia\\minhook.x64d.dll");
+            Log.Info("Extracted minhook.x64d.dll");
+        }
+        
         Console.Setup();
         Game.Setup();
     }

@@ -5,10 +5,10 @@ namespace Sumsum.Internal.Util;
 public static class WinApi
 {
     public const int STD_OUTPUT_HANDLE = -11;
-    const int STD_INPUT_HANDLE = -10;
+    public const int STD_INPUT_HANDLE = -10;
     public const int ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
-    
-    const ushort KEY_EVENT = 1;
+
+    public const ushort KEY_EVENT = 1;
 
     [StructLayout(LayoutKind.Explicit)]
     public struct INPUT_RECORD
@@ -67,6 +67,9 @@ public static class WinApi
 
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
+    
+    [DllImport("kernel32.dll")]
+    public static extern bool VirtualProtect(IntPtr lpAddress, int dwSize, int lpflNewProtect, out int lpflOldProtect);
 
     [DllImport("kernel32.dll", SetLastError = true)]
     public static extern bool WriteConsole(IntPtr hConsoleOutput, string lpBuffer, uint nNumberOfCharsToWrite, out uint lpNumberOfCharsWritten, IntPtr lpReserved);
