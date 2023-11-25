@@ -12,5 +12,5 @@ Internal cheat written in c# for growtopia
 
 ## How to use
   - You need Growtopia 4.19 you can install it from [Here](https://ubistatic-a.akamaihd.net/0098/594764/GrowtopiaInstaller.exe)
-  - Then copy the dll file same folder as the builded injector and drag & drop the .dll file to the injector (Native builded .dll can be found in `Sensum.Internal\bin\Release\net8.0\win-x64\publish` once builded)
+  - Then copy the dll file same folder as the builded injector and drag & drop the .dll file to the injector (Native builded .dll can be found in `Sumsum.Internal\bin\Release\net8.0\win-x64\publish` once builded)
   - Currently you cant login because there isn't any login spoof added yet
